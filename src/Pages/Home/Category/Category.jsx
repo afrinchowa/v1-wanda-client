@@ -10,7 +10,10 @@ import { EffectCoverflow, Pagination } from "swiper/modules";
 
 const Category = () => {
   return (
-    <div className="flex justify-center items-center h-screen">
+ 
+    
+      <div className="flex justify-center items-center h-screen">
+   
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
@@ -56,7 +59,8 @@ const Category = () => {
         </SwiperSlide>
       </Swiper>
     </div>
-  );
+
+  )
 };
 
 export default Category;

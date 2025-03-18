@@ -1,4 +1,5 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+/* eslint-disable no-unused-vars */
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { createContext, useState } from "react";
 import { auth } from "../firebase/firebase.init";
 
@@ -16,14 +17,14 @@ const AuthProvider = ({children}) => {
 
     const signInUser = (email,password)=>{
         setLoading(true);
-        return createUserWithEmailAndPassword(auth,email,password);
+        return signInWithEmailAndPassword(auth,email,password);
     }
 
 
 
     const userInfo = {
             user,
-            setUser,
+          
             loading,
             createUser,
             signInUser
