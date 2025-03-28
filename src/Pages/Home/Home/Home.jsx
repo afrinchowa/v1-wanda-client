@@ -1,13 +1,15 @@
 import SignIn from "../../Signin/Signin";
 import Banner from "../Banner/Banner";
+import BlogCards from "../BlogCards/BlogCards";
 import Category from "../Category/Category";
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-slate-200">
       <Banner />
+  
       <Category />
-      <SignIn />
+      <BlogCards/>
     </div>
   );
 };

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Users = () => {
   const loadedUsers = useLoaderData();
   const [users, setUsers] = useState(loadedUsers);
+
+
+
   const handleDeleteUser = (id) => {
     Swal.fire({
       title: "Are you sure?",

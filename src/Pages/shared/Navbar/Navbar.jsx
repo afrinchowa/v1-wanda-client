@@ -14,9 +14,13 @@ const Navbar = () => {
     <li>
   <NavLink to="/users">Users</NavLink>
   </li>
+    <li>
+  <NavLink to="/contactUs">Contact Us</NavLink>
+  </li>
+ 
   <li>
     <details>
-      <summary>Parent</summary>
+      <summary>Pages</summary>
       <ul className="p-2">
         <li>
           <a>Submenu 1</a>
@@ -58,7 +62,7 @@ const Navbar = () => {
           {navOptions}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Wanda</a>
+          <a className="btn btn-ghost text-xl">Wander log</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -66,7 +70,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+        <li>
+  <NavLink className="btn" to="/addBlog">Post A Blog</NavLink>
+  </li>
         </div>
       </div>
     </div>
