@@ -16,8 +16,36 @@ const BlogCard = ({ blog, blogs, setBlogs }) => {
 
   const [showFullDetails, setShowFullDetails] = useState(false);
  // Delete from the database
- 
-
+ const handleDelete = (_id) => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+     
+      fetch(`http://localhost:5000/blog/${_id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your Blog has been deleted.",
+              icon: "success",
+            });
+            const remainingBlogs = blogs.filter((blog) => blog._id !== _id);
+            setBlogs(remainingBlogs);
+          }
+        });
+    }
+  });
+};
   return (
     <div className="card card-side bg-base-100 shadow-sm p-4">
       <figure>
