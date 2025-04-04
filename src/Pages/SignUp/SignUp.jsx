@@ -2,7 +2,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-
+import Lottie from "lottie-react";
+import registerAnimationData from "../../assets/lottie/register.json";
+import SocialLogin from "../shared/SocialLogin";
 const SignUp = () => {
   const { createUser } = useContext(AuthContext);
 
@@ -38,8 +40,9 @@ const SignUp = () => {
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
+        <div className="text-center lg:text-left w-96">
           <h1 className="text-5xl font-bold">Sign Up now!</h1>
+          <Lottie animationData={registerAnimationData} loop={true} />
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleSignUp} className="card-body">
@@ -83,6 +86,7 @@ const SignUp = () => {
               </button>
             </fieldset>
           </form>
+          <SocialLogin />
         </div>
       </div>
     </div>

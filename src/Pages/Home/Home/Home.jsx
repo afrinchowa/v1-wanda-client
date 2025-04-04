@@ -1,4 +1,4 @@
-import SignIn from "../../Signin/Signin";
+import AboutUs from "../AboutUs/AboutUs";
 import Banner from "../Banner/Banner";
 import BlogCards from "../BlogCards/BlogCards";
 import Category from "../Category/Category";
@@ -10,6 +10,7 @@ const Home = () => {
   
       <Category />
       <BlogCards/>
+      <AboutUs/>
     </div>
   );
 };
