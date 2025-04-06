@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import CommentSection from "../../../components/CommentSection";
+
 
 const BlogCard = ({ blog, blogs, setBlogs }) => {
   const {
@@ -17,43 +19,35 @@ const BlogCard = ({ blog, blogs, setBlogs }) => {
 
   // Delete from the database
   const handleDelete = (_id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`http://localhost:5000/blog/${_id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your Blog has been deleted.",
-                icon: "success",
-              });
-              setBlogs(blogs.filter((blog) => blog._id !== _id));
-            }
-          })
-          .catch((error) => {
-            Swal.fire({
-              title: "Error!",
-              text: "Failed to delete the blog. Please try again.",
-              icon: "error",
-            });
-            console.error("Error deleting blog:", error);
+    console.log("Deleting blog with ID:", _id); // Debugging
+  
+    fetch(`http://localhost:5000/blog/${_id}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        console.log("Response status:", res.status);
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Delete response:", data);
+        if (data.deletedCount > 0) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your Blog has been deleted.",
+            icon: "success",
           });
-      }
-    });
+          setBlogs(blogs.filter((blog) => blog._id !== _id));
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting blog:", error);
+      });
   };
+  
 
   return (
+
+    <div>
     <div className="card card-side bg-base-100 shadow-sm p-4 flex flex-col md:flex-row">
       <figure className="flex-shrink-0">
         <img
@@ -99,10 +93,17 @@ const BlogCard = ({ blog, blogs, setBlogs }) => {
             >
               Delete
             </button>
+           
           </div>
+
         </div>
+      
       </div>
+      
     </div>
+
+<CommentSection blogId={blog._id} />
+</div>
   );
 };
 

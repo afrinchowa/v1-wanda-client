@@ -4,10 +4,11 @@ import Home from "../Pages/Home/Home/Home";
 
 import SignUp from "../Pages/SignUp/SignUp";
 import Users from "../Users/Users";
-import SignIn from "../Pages/Signin/Signin";
+
 import UpdateBlog from "../Pages/UpdateBlog/UpdateBlog";
 import AddBlog from "../Pages/AddBlog/AddBlog";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import SignIn from "../Pages/SignIn/SignIn";
 export const router = createBrowserRouter([
   {
     path: "/",
